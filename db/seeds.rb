@@ -17,5 +17,5 @@ seed_time = Time.now
 		departure = rand(4) + 1
 	end
 	Flight.create!(to_airport_id: destination, from_airport_id: departure,
-								 depart_at: seed_time + rand(1000), duration: rand(1000))
+								 depart_at: seed_time + rand(10).days, duration: rand(10).hours)
 end
