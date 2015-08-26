@@ -2,6 +2,9 @@
 
 <div class="search_form">
 	<%= render 'shared/search_form' %>
-
-	
+</div>
+<div class="search_results">
+	<% if @flights.any? %>
+		<%= render 'shared/search_results' %>
+	<% end %>
 </div>

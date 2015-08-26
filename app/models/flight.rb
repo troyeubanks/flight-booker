@@ -15,4 +15,15 @@ class Flight < ActiveRecord::Base
 	def date_formatted
 		depart_at.strftime("%m/%d/%Y")
 	end
+
+	def self.search(params)
+		if params[:search] && !params[:date].blank?
+			date = params[:date].to_date
+			Flight.where(to_airport_id: params[:to], from_airport_id: params[:from],
+  							 	 depart_at: date.beginning_of_day..date.end_of_day)
+									 .includes(:from_airport, :to_airport)
+    else
+    	Flight.none
+    end
+	end
 end

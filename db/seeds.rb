@@ -11,7 +11,10 @@ Airport.create!(airport_code: "NYC")
 Airport.create!(airport_code: "MCO")
 
 seed_time = Time.now
-5.times do
+Flight.create!(to_airport_id: 1, from_airport_id: 2,
+							 depart_at: seed_time, duration: 5.hours)
+
+50.times do
 	destination = rand(4) + 1
 	while (departure = rand(4) + 1) == destination
 		departure = rand(4) + 1
