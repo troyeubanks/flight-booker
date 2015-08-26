@@ -5,7 +5,9 @@ class Flight < ActiveRecord::Base
 	validates :duration, 		 presence: true
 
 	belongs_to :from_airport, class_name: "Airport"
-	belongs_to :to_airport, class_name: "Airport"
+	belongs_to :to_airport,   class_name: "Airport"
+	has_many :bookings
+	has_many :passengers, through: :bookings
 
 	def self.get_dates
 		order('depart_at asc').pluck(:depart_at)
