@@ -14,11 +14,12 @@ seed_time = Time.now
 Flight.create!(to_airport_id: 1, from_airport_id: 2,
 							 depart_at: seed_time, duration: 5.hours)
 
-50.times do
+100.times do
 	destination = rand(4) + 1
 	while (departure = rand(4) + 1) == destination
 		departure = rand(4) + 1
 	end
 	Flight.create!(to_airport_id: destination, from_airport_id: departure,
-								 depart_at: seed_time + rand(10).days, duration: rand(10).hours)
+								 depart_at: seed_time + rand(10).days + rand(22).hours,
+								 duration: rand(10).hours)
 end
